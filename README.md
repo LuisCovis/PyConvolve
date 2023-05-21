@@ -14,6 +14,5 @@ response to a given input, knowing its reactive response
     * ~~Graph the functions with a given range of input values for testing~~
     * Add extra parsing functionality (constants and functions (dirac and unit step))
 * Apply convolution between functions
-    * Take another input: range. that will define the range of numbers to be evaluated and placed inside the arrays\
-    that will ve convolved
+    * Take inputs to modify the output behaviour (global variables)
     * Graph the system response
