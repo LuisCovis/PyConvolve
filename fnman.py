@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from PyConvolveCfg import *
 from matplotlib import ticker
 
+
 # catchConstants :: Str -> Str
 # takes a math function and looks for mathematic constants such as pi and euler
 def catchConstants(expr):
@@ -43,7 +44,6 @@ def catchFunctions(expr):
     skip = [False, 0]
 
     for i in expr:
-
         if skip[0]:
             if skip[1] < 1:
                 skip[0] = False
@@ -116,16 +116,16 @@ def signalCatch(expr):
         ]
         new_expr = "".join(new_expr)
 
-    # Fail check
-    fail = True
-    while fail:
-        try:
-            eval(new_expr, {"np": np, "math": math}, {"t": 1.0283, "i": 1.0283})
-            fail = False
-        except:
-            new_expr = list(new_expr)
-            new_expr.pop()
-            new_expr = "".join(new_expr)
+    # # Fail check
+    # fail = True
+    # while fail:
+    #     try:
+    #         eval(new_expr, {"np": np, "math": math}, {"t": 1.0283, "i": 1.0283})
+    #         fail = False
+    #     except:
+    #         new_expr = list(new_expr)
+    #         new_expr.pop()
+    #         new_expr = "".join(new_expr)
 
     if len(new_expr) >= 1:
         expr_len = len(range(*XRange)) * XRes + findRoot(new_expr)
@@ -157,7 +157,7 @@ def modifiers(func, lenght):
     values = list()
     for j in range(*XRange):
         if j == 0:
-            zero_index = c * XRes # output
+            zero_index = c * XRes  # output
             break
         c += 1
 
@@ -167,11 +167,11 @@ def modifiers(func, lenght):
             0 if x < zero_index + displacement * XRes else 1 for x in range(lenght)
         ]
         values.append([clist, func[2]])
-        
+
     elif func[1] == "p":  ## Pulse from a to b
-        limits = list(map(int, str(func[3]).split(",")))
+        limits = list(map(float, str(func[3]).split(",")))
         clist = [
-            1 if (limits[0] + 1) * XRes < x and x < (limits[1] + 1) * XRes else 0
+            1 if zero_index + limits[0] * XRes < x and x < zero_index + limits[1] * XRes else 0
             for x in range(lenght)
         ]
         values.append([clist, func[2]])
@@ -283,6 +283,7 @@ def plotter(data, title, y_title, _xlim=XRange, _ylim=YRange):
     ax.axvline(**grid_cfg["axis_line"])
     ax.axhline(**grid_cfg["axis_line"])
     ax.xaxis.set_minor_locator(grid_cfg["locator"])
+    ax.xaxis.set_major_locator(grid_cfg["maj_locator"])
     ax.yaxis.set_minor_locator(grid_cfg["locator"])
 
     ## Labels
@@ -291,5 +292,5 @@ def plotter(data, title, y_title, _xlim=XRange, _ylim=YRange):
     ax.set_ylabel(y_title, loc="top", rotation="horizontal", weight="bold")
 
     ## Save and export
-    fig.savefig("figure.png")
-    fig.show()
+    fig.savefig(f"{title}.png")
+

@@ -1,9 +1,9 @@
 from matplotlib import ticker
 
 # Global variable definitions
-XRange              = (-1,5)
+XRange              = (-6,6)
 XRes                = 25
-YRange              = (-1,5)
+YRange              = (-2,2)
 respuesta_impulsiva = ("Respuesta impulsiva",   "h(t)")
 respuesta_sistema   = ("Respuesta del sistema", "y(t)")
 entrada_sistema     = ("Señal de entrada",      "f(t)")
@@ -28,8 +28,9 @@ grid_cfg            = {"minor":{
                            },
                        "axis_line":{
                            "color":      "black",
-                           "linewidth":  0.7,
+                           "linewidth":  1,
                            "linestyle":  "--"
                            },
-                       "locator":        ticker.MultipleLocator(0.25)
+                       "locator":        ticker.MultipleLocator(0.25),
+                       "maj_locator":    ticker.MultipleLocator(1)
                        }
