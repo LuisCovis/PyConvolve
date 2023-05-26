@@ -1,7 +1,7 @@
 import math
 import numpy as np
 import matplotlib.pyplot as plt
-from PyConvolveCfg import *
+from modules.PyConvolveCfg import *
 from matplotlib import ticker
 
 
@@ -126,7 +126,6 @@ def signalCatch(expr):
     #         new_expr = list(new_expr)
     #         new_expr.pop()
     #         new_expr = "".join(new_expr)
-
     if len(new_expr) >= 1:
         expr_len = len(range(*XRange)) * XRes + findRoot(new_expr)
     else:
@@ -134,6 +133,7 @@ def signalCatch(expr):
         sigOnly = True
 
     final_expr = list(new_expr)
+    print(f"{finder = }")
     for func in finder:
         end_index = func[0] + len(func[3]) + 3
         if not sigOnly:
@@ -142,7 +142,7 @@ def signalCatch(expr):
                 for x in range(len(expr))
                 if x not in range(func[0] - 1, end_index)
             ]
-        final_expr.insert(func[0], modifiers(func, expr_len))
+        final_expr.insert(func[0]-1, modifiers(func, expr_len))
 
     return final_expr
 
@@ -163,9 +163,11 @@ def modifiers(func, lenght):
 
     if func[1] == "u":  ## Step function
         displacement = -eval(func[3], {}, {"t": 0})
+        
         clist = [
             0 if x < zero_index + displacement * XRes else 1 for x in range(lenght)
         ]
+            
         values.append([clist, func[2]])
 
     elif func[1] == "p":  ## Pulse from a to b
@@ -185,8 +187,11 @@ def modifiers(func, lenght):
 
     # Conversion from list to expression
     values = list(*values)
-    expression_value = f"{values[1]}np.array({values[0]})[i]"
-    return expression_value
+    print(f"{ values = }")
+    expression_value = list()
+    for _ in values:
+        expression_value.append(f"{values[1]}np.array({values[0]})[i]")
+    return "".join(expression_value)
 
 
 # inputRead :: Str -> Str

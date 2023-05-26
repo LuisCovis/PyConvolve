@@ -1,11 +1,11 @@
-from PyConvolveCfg import (
+from modules.PyConvolveCfg import (
     respuesta_impulsiva,
     respuesta_sistema,
     entrada_sistema,
     XRange,
     XRes,
 )
-from fnman import plotter, inputRead, funcSweep
+from modules.functions import plotter, inputRead, funcSweep
 from scipy import signal
 import os
 
