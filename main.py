@@ -5,6 +5,12 @@ from scipy import signal
 import os
 import time
 
+try:
+    os.mkdir(cfg.EXPORT_PATH)
+    print("Creando directorio de exportación\n")
+except:
+    pass
+
 def clear():
     if cfg.UNIX:
         os.system("clear")

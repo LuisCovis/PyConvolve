@@ -1,9 +1,14 @@
-import math
-import numpy as np
-import matplotlib.pyplot as plt
-from modules.PyConvolveCfg import defaultConfiguration as cfg
-from matplotlib import ticker
-
+try:
+    import math
+    import numpy as np
+    import matplotlib.pyplot as plt
+    import scipy
+    from modules.PyConvolveCfg import defaultConfiguration as cfg
+    from matplotlib import ticker
+except:
+    print("No se encontraron algunas dependencias, asegúrate de instalar MatPlotLib, Numpy y sciPy antes de ejecutar.")
+    input()
+    exit()
 
 def getLenght():
     return len(range(*cfg.XRange)) * cfg.XRes
