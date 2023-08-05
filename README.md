@@ -1,11 +1,8 @@
 # PyConvolve
-This project consists of an application that can apply the convolution operation to analyze the system's 
-response to a given input, knowing its reactive response
+El script está pensado para verificar rápidamente la convolución de dos funciones, obteniendo su gráfica. Esto permite conocer la respuesta de un sistema si se conoce la función que describe su respuesta impulsiva.
 
-## Roadmap
-1. ~~Basic functionality~~
-2. ~~Improved code~~
-3. Graphical interface
-4. DSP tool suite
-
-
+## Dependencias
+* Python 3.10.6+
+* MatPlotLib
+* SciPy
+* Numpy
