@@ -3,10 +3,12 @@ import math
 import numpy as np
 from modules.functions import p, u, d
 from modules.PyConvolveCfg import defaultConfiguration as cfg
-#import time
+
+# import time
 
 REGEX_SANITIZING_FILTER = "|\\".join(cfg.nmfilter)
 REGEX_FUNCTIONS = "|".join(cfg.function_list)
+
 
 class UserDefinedFunction:
     def __init__(self, message):
@@ -46,7 +48,7 @@ class UserDefinedFunction:
         )
 
     def getValues(self):
-        #start = time.time()
+        # start = time.time()
         cfg.updateRange()
         self.X_Axis = [
             i / cfg.XRes
@@ -71,8 +73,8 @@ class UserDefinedFunction:
             except IndexError:
                 self.Y_Axis.append(self.Y_Axis[-1])
             c += 1
-        #print(f"La funcion tardó {time.time() - start} segundos en generar")
-        #input()
+        # print(f"La funcion tardó {time.time() - start} segundos en generar")
+        # input()
         return np.array([self.X_Axis, self.Y_Axis])
 
     def __str__(self):

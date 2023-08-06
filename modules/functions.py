@@ -12,7 +12,7 @@ def getLenght():
 def getZero_index():
     return getLenght() // 2
 
-
+# Step function
 def u(step_expression: int, index: int) -> int:  # Step function
     displacement = -eval(step_expression, {}, {"t": 0})
     t_isPositive = (eval(step_expression, {}, {"t": 1}) + displacement) > 0
@@ -23,7 +23,7 @@ def u(step_expression: int, index: int) -> int:  # Step function
 
     return 1 if index <= zero_index + displacement * cfg.XRes else 0
 
-
+# Pulse function: "u(t-a)-u(t-b)" where a < b
 def p(pulse_range: int, index: int, *args) -> int:  # Pulse signal
     limits = tuple(map(float, str(pulse_range).split(",")))
     lenght = getLenght()
@@ -35,7 +35,7 @@ def p(pulse_range: int, index: int, *args) -> int:  # Pulse signal
         else 0
     )
 
-
+# Impusle function
 def d(dirac_expression: int, index: int) -> int:  # Dirac delta
     displacement = -eval(dirac_expression, {}, {"t": 0})
     lenght = getLenght()
@@ -52,8 +52,8 @@ def plotter(
     y_title,
     PATH=cfg.EXPORT_PATH,
 ):
-    _xlim=cfg.XPlotRange
-    _ylim=cfg.YPlotRange
+    _xlim = cfg.XPlotRange
+    _ylim = cfg.YPlotRange
     ## Plot call and trimming
     fig, ax = plt.subplots()
     ax.set_xlim(*_xlim)
@@ -72,11 +72,15 @@ def plotter(
     ax.xaxis.set_minor_locator(cfg.grid_cfg["locator"])
     ax.xaxis.set_major_locator(cfg.grid_cfg["maj_locator"])
     ax.yaxis.set_minor_locator(cfg.grid_cfg["locator"])
+    ax.tick_params(axis='x', colors=cfg.color_palette["text_color"])    
+    ax.tick_params(axis='y', colors=cfg.color_palette["text_color"])  
+    ax.spines['left'].set_color(cfg.color_palette["text_color"])        
+    ax.spines['bottom'].set_color(cfg.color_palette["text_color"]) 
 
     ## Labels
-    ax.set_title(title, size=18)
-    ax.set_xlabel("t", loc="right", weight="bold")
-    ax.set_ylabel(y_title, loc="top", rotation="horizontal", weight="bold")
+    ax.set_title(title, size=18, color=cfg.color_palette["text_color"])
+    ax.set_xlabel("t", loc="right", weight="bold", color=cfg.color_palette["text_color"])
+    ax.set_ylabel(y_title, loc="top", rotation="horizontal", weight="bold", color=cfg.color_palette["text_color"])
 
     ## Save and export
-    fig.savefig(f"{PATH}/{title}.pdf")
+    fig.savefig(f"{PATH}{title}.pdf")
