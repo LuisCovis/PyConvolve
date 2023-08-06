@@ -1,6 +1,5 @@
 # PyConvolve
-<<<<<<< HEAD
-PyConvolve es una herramienta que permite convolucionar funciones.
+PyConvolve es una herramienta que permite convolucionar dos señales.
 
 La definición de las funciones se realiza describiendo cada operación de manera literal
 Solo se pueden agrupar términos con paréntesis y es posible editar las expresiones, así
@@ -36,4 +35,3 @@ El script está pensado para verificar rápidamente la convolución de dos funci
 * MatPlotLib
 * SciPy
 * Numpy
->>>>>>> c0f58c2035f6eebee71e169fbc266be6059bfb44
