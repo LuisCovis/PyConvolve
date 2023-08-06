@@ -6,6 +6,12 @@ import os
 import time
 import numpy as np
 
+try:
+    os.mkdir(cfg.EXPORT_PATH)
+    print("Creando directorio de exportación\n")
+except:
+    pass
+
 def clear():
     if cfg.UNIX:
         os.system("clear")

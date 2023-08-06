@@ -40,8 +40,8 @@ class MainConfiguration:
                                         "linewidth":  1,
                                         "linestyle":  "--"
                                         },
-                                    "locator":        ticker.MultipleLocator(0.25),
-                                    "maj_locator":    ticker.MultipleLocator(1)
+                                    "locator":        ticker.MultipleLocator(.5),
+                                    "maj_locator":    ticker.AutoLocator()
                                     }
 
     def updateRange(self):
