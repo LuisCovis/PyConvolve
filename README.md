@@ -37,3 +37,15 @@ La respuesta carecerá de las frecuencias altas del coseno. fuente: The Scientis
 * MatPlotLib
 * SciPy
 * Numpy
+
+Para instalarlas, se debe ingresar al directorio del proyecto
+
+```bash
+cd PyConvolve
+```
+
+E instalar las dependencias con el siguiente comando:
+
+```bash
+pip install -r requirements.txt
+```
